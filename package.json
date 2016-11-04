@@ -1,0 +1,20 @@
+{
+  "name": "elbstack-logs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elbstack/elbstack-logs.git"
+  },
+  "author": "elbstack GmbH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elbstack/elbstack-logs/issues"
+  },
+  "homepage": "https://github.com/elbstack/elbstack-logs#readme",
+  "dependencies": {}
+}
