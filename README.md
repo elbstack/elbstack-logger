@@ -26,11 +26,11 @@ Logger.LOG_LEVEL_FATAL
 ## Usage with text messages
 
 ```javascript
-Logger.info('This is a sample text');
+logger.info('This is a sample text');
 ```
 
 ## Usage with JSON serializable objects
 
 ```javascript
-Logger.info({ key: 'value' });
+logger.info({ key: 'value' });
 ```
