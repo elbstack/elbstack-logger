@@ -1,5 +1,30 @@
 # Simple logger for NodeJS
 
+## What does it do?
+
+This logger simply uses the Javascript `console` object to log messages. If you log a text message the format will be:
+
+```json
+{
+  "@appId": "elbstack-logs-test",
+  "@version": "1.0.0",
+  "@level": "info",
+  "text": "This is a sample text"
+}
+```
+
+If you log a JSON serializable object the format will be:
+
+```json
+{
+  "@appId": "elbstack-logs-test",
+  "@version": "1.0.0",
+  "@level": "warn",
+  "key1": "value1",
+  "key2": 2
+}
+```
+
 ## Installation
 
 ```bash
@@ -32,5 +57,5 @@ logger.info('This is a sample text');
 ## Usage with JSON serializable objects
 
 ```javascript
-logger.info({ key: 'value' });
+logger.info({ key1: 'value1', key2: 2 });
 ```
