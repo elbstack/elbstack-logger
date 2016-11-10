@@ -16,5 +16,8 @@
     "url": "https://github.com/elbstack/elbstack-logs/issues"
   },
   "homepage": "https://github.com/elbstack/elbstack-logs#readme",
-  "dependencies": {}
+  "dependencies": {
+    "object-keys": "^1.0.11",
+    "object.values": "^1.0.3"
+  }
 }

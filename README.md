@@ -2,7 +2,7 @@
 
 ## What does it do?
 
-This logger simply uses the Javascript `console` object to log messages. If you log a text message the format will be:
+This logger simply uses the Javascript `console` object to log messages in JSON format. The JSON will be transformed to a string by simply running `JSON.stringify` on it. If you log a text message the format will be:
 
 ```json
 {
@@ -58,4 +58,25 @@ logger.info('This is a sample text');
 
 ```javascript
 logger.info({ key1: 'value1', key2: 2 });
+```
+
+## Usage with both 
+
+The logger simply accepts multiple arguments. All object type arguments will be merged straight away into the logged JSON from the right to the left. All arguments of other types will be merged to one string divided by spaces. That means that if you would do the following function call:
+
+```js
+logger.info({ key1: 'value1' }, 'abcdefg', { key1: 'value1Overwrite', anotherKey: 1 }, 5);
+```
+
+Then the result will be:
+
+```json
+{
+  "@appId": "sample-app-id",
+  "@version": "1.0.0",
+  "@level": "info",
+  "key1": "value1Overwrite",
+  "anotherKey": 1,
+  "text": "abcdefg 5"
+}
 ```

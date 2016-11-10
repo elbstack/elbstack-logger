@@ -1,8 +1,13 @@
+const objectValues = require('object.values');
+const objectKeys = require('object-keys');
+
 const LOG_LEVEL_DEBUG = 'debug';
 const LOG_LEVEL_INFO = 'info';
 const LOG_LEVEL_WARN = 'warn';
 const LOG_LEVEL_ERROR = 'error';
 const LOG_LEVEL_FATAL = 'fatal';
+
+const TEXT_SEPARATOR = ' ';
 
 const logLevelHierarchy = [
   LOG_LEVEL_DEBUG,
@@ -26,37 +31,44 @@ const Logger = function(appId, version, logLevel) {
   }
 };
 
-Logger.prototype._transformMessage = function(message, level) {
+Logger.prototype._transformArguments = function(arguments, level) {
   const baseMessage = {
     '@appId': this.appId,
     '@version': this.version,
     '@level': level
   };
 
-  if (typeof message === 'string') {
-    baseMessage.text = message;
-  } else {
-    Object.keys(message).forEach(function(key) {
-      baseMessage[key] = message[key];
-    });
+  const textMessages = [];
+  arguments.forEach(function(argument) {
+    if (typeof argument === 'object') {
+      objectKeys(argument).forEach(function(key) {
+        baseMessage[key] = argument[key];
+      });
+    } else {
+      textMessages.push(argument);
+    }
+  });
+
+  if (textMessages.length > 0) {
+    baseMessage.text = textMessages.join(TEXT_SEPARATOR);
   }
 
   return JSON.stringify(baseMessage);
 };
 
 logLevelHierarchy.forEach(function(logLevel) {
-  Logger.prototype[logLevel] = function(message) {
+  Logger.prototype[logLevel] = function() {
     if (logLevelHierarchy.indexOf(this.logLevel) <= logLevelHierarchy.indexOf(logLevel)) {
-      const transformedMessage = this._transformMessage(message, logLevel);
+      const message = this._transformArguments(objectValues(arguments), logLevel);
       switch (logLevel) {
         case LOG_LEVEL_DEBUG:
-          console.log(transformedMessage);
+          console.log(message);
           break;
         case LOG_LEVEL_FATAL:
-          console.error(transformedMessage);
+          console.error(message);
           break;
         default:
-          console[logLevel](transformedMessage);
+          console[logLevel](message);
       }
     }
   }
