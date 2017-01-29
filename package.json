@@ -1,7 +1,13 @@
 {
   "name": "elbstack-logger",
   "version": "1.0.0",
-  "description": "",
+  "description": "Just another simple logging module",
+  "keywords": [
+    "log",
+    "logging",
+    "json",
+    "elbstack"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
