@@ -17,7 +17,7 @@
     "url": "git+https://github.com/elbstack/elbstack-logs.git"
   },
   "author": "elbstack GmbH",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/elbstack/elbstack-logs/issues"
   },
