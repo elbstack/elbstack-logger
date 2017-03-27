@@ -31,7 +31,7 @@ const Logger = function(appId, version, logLevel) {
   }
 };
 
-Logger.prototype._transformArguments = function(arguments, level) {
+Logger.prototype._transformArguments = function(args, level) {
   const baseMessage = {
     '@appId': this.appId,
     '@version': this.version,
@@ -39,7 +39,7 @@ Logger.prototype._transformArguments = function(arguments, level) {
   };
 
   const textMessages = [];
-  arguments.forEach(function(argument) {
+  args.forEach(function(argument) {
     if (typeof argument === 'object') {
       objectKeys(argument).forEach(function(key) {
         baseMessage[key] = argument[key];
