@@ -9,6 +9,7 @@ This logger simply uses the Javascript `console` object to log messages in JSON 
   "@appId": "elbstack-logs-test",
   "@version": "1.0.0",
   "@level": "info",
+  "@timestamp": 1490676496916,
   "text": "This is a sample text"
 }
 ```
@@ -20,6 +21,7 @@ If you log a JSON serializable object the format will be:
   "@appId": "elbstack-logs-test",
   "@version": "1.0.0",
   "@level": "warn",
+  "@timestamp": 1490676496916,
   "key1": "value1",
   "key2": 2
 }
@@ -75,6 +77,7 @@ Then the result will be:
   "@appId": "sample-app-id",
   "@version": "1.0.0",
   "@level": "info",
+  "@timestamp": 1490676496916,
   "key1": "value1Overwrite",
   "anotherKey": 1,
   "text": "abcdefg 5"

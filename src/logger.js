@@ -35,7 +35,8 @@ Logger.prototype._transformArguments = function(args, level) {
   const baseMessage = {
     '@appId': this.appId,
     '@version': this.version,
-    '@level': level
+    '@level': level,
+    '@timestamp': Date.now()
   };
 
   const textMessages = [];
