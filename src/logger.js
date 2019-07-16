@@ -45,6 +45,10 @@ Logger.prototype._transformArguments = function(args, level) {
       objectKeys(argument).forEach(function(key) {
         baseMessage[key] = argument[key];
       });
+
+      if (argument instanceof Error) {
+        baseMessage.message = argument.message;
+      }
     } else {
       textMessages.push(argument);
     }
